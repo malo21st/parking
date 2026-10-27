@@ -134,6 +134,10 @@ async function loadAvailableParking() {
       spots.filter(
         spot => spot.status === "空き"
       );
+
+console.log(spots);
+console.log(available);
+console.log(available.length);
     
     if (available.length === 0) {
     
