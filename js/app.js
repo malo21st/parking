@@ -11,8 +11,8 @@ document
 
     const data = {
       name: form.name.value,
-      phone: form.email.value,
-      plan: form.request.value,
+      email: form.email.value,
+      request: form.request.value,
       message: form.message.value
     };
 
