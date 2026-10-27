@@ -9,64 +9,41 @@ document
 
     const form = e.target;
 
-    const data = {
-      name: form.name.value,
-      email: form.email.value,
-      request: form.request.value,
-      message: form.message.value
-    };
-
     try {
+
+      document.getElementById("result").innerHTML =
+        "送信中...";
+
+      const formData = new FormData();
+
+      formData.append("name", form.name.value);
+      formData.append("email", form.email.value);
+      formData.append("request", form.request.value);
+      formData.append("message", form.message.value);
 
       const response = await fetch(
         GAS_URL,
         {
           method: "POST",
-          mode: "cors",
-          headers: {
-            "Content-Type":
-              "application/json"
-          },
-          body: JSON.stringify(data)
+          body: formData
         }
       );
 
-      const result =
-        await response.json();
+      const text = await response.text();
 
-      if (result.success) {
+      console.log(text);
 
-        document
-          .getElementById("result")
-          .innerHTML =
-          "お申し込みを受け付けました。";
+      document.getElementById("result").innerHTML =
+        "お申し込みを受け付けました。";
 
-        form.reset();
+      form.reset();
 
-      } else {
+    } catch (error) {
 
-        throw new Error(
-          result.error
-        );
+      console.error(error);
 
-      }
+      document.getElementById("result").innerHTML =
+        "送信エラー: " + error.message;
+    }
 
-
-  } catch (error) {
-
-  console.error(error);
-
-  document.getElementById("result").innerHTML =
-    "送信エラー: " + error.message;
-}
-    // } catch (error) {
-
-    //   document
-    //     .getElementById("result")
-    //     .innerHTML =
-    //     "送信エラーが発生しました。";
-
-    //   console.error(error);
-    // }
-
-});
+  });
