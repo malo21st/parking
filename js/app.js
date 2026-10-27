@@ -130,6 +130,19 @@ async function loadAvailableParking() {
     const select =
       document.getElementById("request");
 
+    const available =
+      spots.filter(
+        spot => spot.status === "空き"
+      );
+    
+    if (available.length === 0) {
+    
+      select.innerHTML =
+        '<option>現在空き区画はありません</option>';
+    
+      return;
+    }
+    
     select.innerHTML =
       '<option value="">選択してください</option>';
 
