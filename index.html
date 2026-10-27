@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>〇〇駐車場</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <h1>〇〇駐車場</h1>
+  <p>ご利用ありがとうございます</p>
+</header>
+
+<section class="status">
+  <h2>現在の空き状況</h2>
+  <div id="parking-status" class="available">
+    ✅ 空きあり
+  </div>
+</section>
+
+<section>
+  <h2>料金案内</h2>
+
+  <table>
+    <tr>
+      <th>利用区分</th>
+      <th>料金</th>
+    </tr>
+    <tr>
+      <td>1日利用</td>
+      <td>500円</td>
+    </tr>
+    <tr>
+      <td>月極</td>
+      <td>5,000円</td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <h2>所在地</h2>
+  <p>
+    福岡県〇〇市〇〇
+  </p>
+
+  <a
+    href="https://maps.google.com/?q=33.5902,130.4017"
+    target="_blank">
+    Googleマップで開く
+  </a>
+</section>
+
+<section>
+  <h2>利用申込</h2>
+
+  <form id="applyForm">
+
+    <label>氏名</label>
+    <input type="text" name="name" required>
+
+    <label>電話番号</label>
+    <input type="tel" name="phone" required>
+
+    <label>利用種別</label>
+    <select name="plan">
+      <option>1日利用</option>
+      <option>月極利用</option>
+    </select>
+
+    <label>備考</label>
+    <textarea name="message"></textarea>
+
+    <button type="submit">
+      申し込む
+    </button>
+
+  </form>
+
+  <div id="result"></div>
+
+</section>
+
+<footer>
+  <p>© 〇〇駐車場</p>
+</footer>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>
