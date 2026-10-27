@@ -51,14 +51,22 @@ document
 
       }
 
-    } catch (error) {
 
-      document
-        .getElementById("result")
-        .innerHTML =
-        "送信エラーが発生しました。";
+  } catch (error) {
 
-      console.error(error);
-    }
+  console.error(error);
+
+  document.getElementById("result").innerHTML =
+    "送信エラー: " + error.message;
+}
+    // } catch (error) {
+
+    //   document
+    //     .getElementById("result")
+    //     .innerHTML =
+    //     "送信エラーが発生しました。";
+
+    //   console.error(error);
+    // }
 
 });
