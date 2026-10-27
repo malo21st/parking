@@ -52,3 +52,69 @@ document
     }
 
   });
+
+async function loadParkingStatus() {
+
+  try {
+
+    const response =
+      await fetch(GAS_URL);
+
+    const spots =
+      await response.json();
+
+    let html = "";
+
+    spots.forEach(spot => {
+
+      let icon = "";
+      let className = "";
+
+      switch (spot.status) {
+
+        case "空き":
+          icon = "🟢";
+          className = "vacant";
+          break;
+
+        case "契約済":
+          icon = "🔴";
+          className = "contract";
+          break;
+
+        case "商談中":
+          icon = "🟡";
+          className = "negotiating";
+          break;
+
+        case "利用停止":
+          icon = "⚫";
+          className = "disabled";
+          break;
+      }
+
+      html += `
+        <div class="parking-card ${className}">
+          <strong>区画 ${spot.number}</strong>
+          <br>
+          ${icon} ${spot.status}
+        </div>
+      `;
+    });
+
+    document.getElementById(
+      "parking-status"
+    ).innerHTML = html;
+
+  } catch (error) {
+
+    console.error(error);
+
+    document.getElementById(
+      "parking-status"
+    ).innerHTML =
+      "利用状況を取得できませんでした。";
+  }
+}
+
+loadParkingStatus();
