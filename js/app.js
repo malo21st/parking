@@ -9,10 +9,16 @@ document
 
     const form = e.target;
 
+    const submitButton =
+      document.getElementById("submitButton");
+
+    // ボタン無効化
+    submitButton.disabled = true;
+
     try {
 
       document.getElementById("result").innerHTML =
-        "送信中...";
+        "送信中です。しばらくお待ちください。";
 
       const formData = new FormData();
 
@@ -21,17 +27,13 @@ document
       formData.append("request", form.request.value);
       formData.append("message", form.message.value);
 
-      const response = await fetch(
+      await fetch(
         GAS_URL,
         {
           method: "POST",
           body: formData
         }
       );
-
-      const text = await response.text();
-
-      console.log(text);
 
       document.getElementById("result").innerHTML =
         "お申し込みを受け付けました。";
@@ -43,7 +45,10 @@ document
       console.error(error);
 
       document.getElementById("result").innerHTML =
-        "送信エラー: " + error.message;
+        "送信エラーが発生しました。";
+
+      // エラー時は再度押せるようにする
+      submitButton.disabled = false;
     }
 
   });
