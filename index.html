@@ -64,15 +64,17 @@
     <label>メールアドレス</label>
     <input type="email" name="email" required>
 
-    <label>希望駐車場番号</label>
-    <select name="request">
-      <option>　</option>
-      <option>１</option>
-      <option>２</option>
-      <option>３</option>
-      <option>４</option>
+    <label>希望駐車場</label>
+    <select
+      id="request"
+      name="request"
+      required>
+  
+      <option value="">
+        読み込み中...
+      </option>  
     </select>
-
+    
     <label>備考</label>
     <textarea name="message"></textarea>
 
