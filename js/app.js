@@ -117,4 +117,48 @@ async function loadParkingStatus() {
   }
 }
 
+async function loadAvailableParking() {
+
+  try {
+
+    const response =
+      await fetch(GAS_URL);
+
+    const spots =
+      await response.json();
+
+    const select =
+      document.getElementById("request");
+
+    select.innerHTML =
+      '<option value="">選択してください</option>';
+
+    spots.forEach(spot => {
+
+      if (spot.status === "空き") {
+
+        const option =
+          document.createElement("option");
+
+        option.value =
+          `区画${spot.number}`;
+
+        option.textContent =
+          `区画${spot.number}`;
+
+        select.appendChild(option);
+      }
+    });
+
+  } catch (error) {
+
+    console.error(error);
+
+    document.getElementById("request")
+      .innerHTML =
+      '<option>取得エラー</option>';
+  }
+}
+
 loadParkingStatus();
+loadAvailableParking();
