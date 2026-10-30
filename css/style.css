@@ -60,6 +60,12 @@ textarea:focus {
   box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.2);
 }
 
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
 button {
   background: #1e88e5;
   color: white;
