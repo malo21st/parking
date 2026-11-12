@@ -122,7 +122,7 @@ button:disabled {
   background: #eeeeee;
 }
 
-img {
+.parking-map {
   width: 100%;
   height: auto;
   display: block;
